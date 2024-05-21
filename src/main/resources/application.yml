@@ -1,0 +1,37 @@
+# Port
+server:
+  port: 8080
+
+# Database settings
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ''
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  output:
+    ansi:
+      enabled: ALWAYS
+
+# Logging settings
+logging:
+  level:
+    root: INFO  # Set the root logging level to INFO
+    com:
+      manhnguyenduc:
+        accounts: DEBUG  # Set DEBUG level for com.manhnguyenduc.accounts package
+  file:
+    name: account-microservice.log  # Specify the name of the log file
+    pattern:
+      console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"  # Pattern for console output
+      file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"  # Pattern for log file
+    max-history: 7  # Keep logs for the last 7 days
+    max-size: 10MB  # Set the maximum size of the log file to 10MB
